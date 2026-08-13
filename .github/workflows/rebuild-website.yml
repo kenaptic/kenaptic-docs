@@ -1,0 +1,40 @@
+# Rebuild kenaptic.com when this repository changes.
+#
+# The website is built from three repositories but Cloudflare only watches one of them
+# (kenaptic-website). Without this, merging here updates GitHub and leaves the live site on the
+# previous content — the worst kind of failure, because every part of it looks like it worked.
+#
+# Deliberately triggers on EVERY push to main rather than on a path filter. A wasted build costs
+# a minute; a path filter that misses a new directory costs a silently stale site, and nobody
+# goes looking for that until a customer mentions it.
+name: Rebuild kenaptic.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # lets you force a rebuild from the Actions tab
+
+# One rebuild at a time, and drop queued ones: they would all produce the same result.
+concurrency:
+  group: rebuild-website
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the Cloudflare build
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::CF_DEPLOY_HOOK is not set."
+            echo "Add it under Settings -> Secrets and variables -> Actions -> New repository secret."
+            echo "The value is the deploy hook URL from Cloudflare:"
+            echo "  Workers & Pages -> kenaptic -> Settings -> Build -> Deploy hooks"
+            exit 1
+          fi
+          # -f so a non-2xx becomes a failed job. A hook that silently 404s would leave the site
+          # stale while this workflow showed a green tick, which is worse than no workflow.
+          code=$(curl -sS -f -X POST -o /dev/null -w '%{http_code}' "$HOOK")
+          echo "Cloudflare accepted the rebuild request (HTTP $code)."
