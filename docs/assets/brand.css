@@ -1,0 +1,233 @@
+/* ============================================================================
+   Kenaptic — MkDocs Material brand theme
+   Matches the approved visual direction: dark-first, the exact brand palette,
+   Inter + JetBrains Mono (as shipped in the website and the console).
+   ============================================================================ */
+
+:root {
+  /* Brand palette (moodboard) */
+  --kn-signal:   #4F6BFF;   /* Signal Blue  */
+  --kn-signal-2: #6B9BFF;   /* Signal Blue light */
+  --kn-signal-3: #2D6BFF;   /* Signal Blue deep  */
+  --kn-orange:   #FF6B2D;   /* Source Orange */
+  --kn-green:    #22C55E;   /* Trust Green   */
+  --kn-amber:    #F5B84C;   /* Warning Amber */
+  --kn-red:      #EF4444;   /* Soft Red      */
+
+  --md-text-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --md-code-font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Primary/accent apply to both schemes */
+  --md-primary-fg-color:        var(--kn-signal);
+  --md-primary-fg-color--light: var(--kn-signal-2);
+  --md-primary-fg-color--dark:  var(--kn-signal-3);
+  --md-primary-bg-color:        #ffffff;
+  --md-accent-fg-color:         var(--kn-orange);
+}
+
+/* ============================ DARK (brand default) ======================== */
+[data-md-color-scheme="slate"] {
+  --md-hue: 220;
+  --kn-canvas:  #0A0F14;
+  --kn-surface: #111620;
+  --kn-elev:    #161C27;
+  --kn-border:  #232A36;
+  --kn-t1: #E6EAEE;   /* Text Primary   */
+  --kn-t2: #A3ACB9;   /* Text Secondary */
+  --kn-t3: #6B7280;   /* Text Muted     */
+
+  --md-default-bg-color:          var(--kn-canvas);
+  --md-default-bg-color--light:   var(--kn-surface);
+  --md-default-bg-color--lighter: var(--kn-elev);
+  --md-default-fg-color:          var(--kn-t1);
+  --md-default-fg-color--light:   var(--kn-t2);
+  --md-default-fg-color--lighter: var(--kn-t3);
+  --md-default-fg-color--lightest: var(--kn-border);
+
+  --md-typeset-color:      var(--kn-t1);
+  --md-typeset-a-color:    var(--kn-signal-2);
+  --md-code-bg-color:      var(--kn-surface);
+  --md-code-fg-color:      #C3CAD6;
+  --md-code-hl-color:      rgba(79, 107, 255, 0.18);
+
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.06);
+  --md-footer-bg-color:       var(--kn-canvas);
+  --md-footer-bg-color--dark: var(--kn-canvas);
+  --md-footer-fg-color:       var(--kn-t2);
+
+  color-scheme: dark;
+}
+
+/* ============================ LIGHT (toggle) ============================== */
+[data-md-color-scheme="default"] {
+  --kn-canvas:  #F4F6FA;
+  --kn-surface: #FFFFFF;
+  --kn-elev:    #FFFFFF;
+  --kn-border:  #E1E6EF;
+  --kn-t1: #0E121B;
+  --kn-t2: #3A4150;
+  --kn-t3: #5B6373;
+
+  --md-default-bg-color:        var(--kn-canvas);
+  --md-default-fg-color:        var(--kn-t1);
+  --md-default-fg-color--light: var(--kn-t2);
+  --md-typeset-color:           var(--kn-t1);
+  --md-typeset-a-color:         var(--kn-signal-3);
+  --md-code-bg-color:           #EEF1F7;
+  --md-code-fg-color:           #26303f;
+}
+
+/* ============================ Typography ================================== */
+.md-typeset {
+  font-feature-settings: "kern", "liga";
+  font-size: .82rem;               /* ~16px body for readable long-form */
+  line-height: 1.65;
+}
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-family: var(--md-text-font-family);
+  color: var(--md-default-fg-color);
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+.md-typeset h1 { font-size: 2.05rem; line-height: 1.15; font-weight: 800; margin: 0 0 .7em; }
+.md-typeset h2 { font-size: 1.5rem;  line-height: 1.25; margin: 2.2em 0 .7em;
+  padding-top: 1.2em; border-top: 1px solid var(--kn-border); }
+.md-typeset h3 { font-size: 1.2rem;  line-height: 1.3;  margin: 1.8em 0 .5em; font-weight: 600; }
+.md-typeset h1 + *, .md-typeset h2 + *, .md-typeset h3 + * { margin-top: 0; }
+/* Orange accent on emphasised inline text, echoing the site's "at the source". */
+.md-typeset strong { color: var(--md-default-fg-color); font-weight: 600; }
+
+/* Links: Signal Blue, Source Orange on hover. */
+.md-typeset a { text-underline-offset: .18em; transition: color .12s ease; }
+.md-typeset a:hover { color: var(--kn-orange); }
+
+::selection { background: rgba(79, 107, 255, .32); }
+
+/* ============================ Header / chrome ============================= */
+/* Dark app-chrome header (not the primary-blue default), matching the console. */
+.md-header {
+  background: var(--kn-canvas);
+  border-bottom: 1px solid var(--kn-border);
+  box-shadow: none;
+  color: var(--md-default-fg-color);
+}
+[data-md-color-scheme="default"] .md-header { background: rgba(244,246,250,.92); backdrop-filter: blur(8px); }
+.md-header__title { font-weight: 600; letter-spacing: -.01em; }
+.md-header__button.md-logo img { height: 1.5rem; width: auto; }
+.md-tabs { background: transparent; }
+
+/* Search field on surface */
+.md-search__form {
+  background: var(--kn-surface);
+  border: 1px solid var(--kn-border);
+  border-radius: 10px;
+  box-shadow: none;
+}
+.md-search__form:hover { background: var(--kn-elev); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form { background: var(--kn-surface); }
+.md-search__input { color: var(--md-default-fg-color); }
+.md-search__input::placeholder { color: var(--kn-t3); }
+.md-search-result__meta,
+.md-search__output .md-search-result__article { background: var(--kn-canvas); }
+
+/* ============================ Navigation ================================= */
+.md-nav { font-size: .72rem; }
+.md-nav__title { color: var(--kn-t3); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+.md-nav__link { color: var(--kn-t2); transition: color .12s ease; border-radius: 6px; }
+.md-nav__link:hover { color: var(--kn-orange); }
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link { color: var(--kn-signal-2); font-weight: 600; }
+/* Signal-blue rail on the active section link */
+.md-nav__link--active { position: relative; }
+.md-sidebar .md-nav__list .md-nav__link--active::before {
+  content: ""; position: absolute; left: -14px; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 1.05em; border-radius: 2px; background: var(--kn-signal);
+}
+/* Table of contents active marker in Source Orange */
+.md-nav--secondary .md-nav__link--active { color: var(--kn-orange); }
+
+/* ============================ Code ======================================= */
+.md-typeset code { font-size: .78em; padding: .12em .38em; border-radius: 5px;
+  background: var(--md-code-bg-color); border: 1px solid var(--kn-border); }
+.md-typeset pre > code { border: 0; }
+.md-typeset .highlight,
+.md-typeset pre { border: 1px solid var(--kn-border); border-radius: 12px; }
+.md-typeset pre > code { background: var(--md-code-bg-color); }
+.md-clipboard { color: var(--kn-t3); }
+.md-clipboard:hover { color: var(--kn-orange); }
+
+/* ============================ Admonitions ================================ */
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--kn-surface);
+  border: 1px solid var(--kn-border);
+  border-left-width: 3px;
+  border-radius: 12px;
+  font-size: .76rem;
+  box-shadow: none;
+}
+.md-typeset .admonition-title, .md-typeset summary { background: transparent; font-weight: 600; }
+/* map admonition kinds to the brand's semantic colours */
+.md-typeset .admonition.note,     .md-typeset .admonition.info    { border-left-color: var(--kn-signal); }
+.md-typeset .note > .admonition-title::before,
+.md-typeset .info > .admonition-title::before { background: var(--kn-signal); }
+.md-typeset .admonition.tip,      .md-typeset .admonition.hint,
+.md-typeset .admonition.example                                   { border-left-color: var(--kn-orange); }
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .example > .admonition-title::before                  { background: var(--kn-orange); }
+.md-typeset .admonition.success,  .md-typeset .admonition.check   { border-left-color: var(--kn-green); }
+.md-typeset .success > .admonition-title::before                  { background: var(--kn-green); }
+.md-typeset .admonition.warning                                    { border-left-color: var(--kn-amber); }
+.md-typeset .warning > .admonition-title::before                  { background: var(--kn-amber); }
+.md-typeset .admonition.danger,   .md-typeset .admonition.failure { border-left-color: var(--kn-red); }
+.md-typeset .danger > .admonition-title::before                   { background: var(--kn-red); }
+
+/* ============================ Tables ===================================== */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--kn-border); border-radius: 12px; overflow: hidden; font-size: .74rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--kn-elev); color: var(--md-default-fg-color); font-weight: 600;
+  border-bottom: 1px solid var(--kn-border);
+}
+.md-typeset table:not([class]) td { border-top: 1px solid var(--kn-border); }
+.md-typeset table:not([class]) tr:hover { background: rgba(79,107,255,.05); }
+
+/* ============================ Blockquote, rules ========================== */
+.md-typeset blockquote { border-left: 3px solid var(--kn-signal); color: var(--kn-t2); }
+.md-typeset hr { border-bottom: 1px solid var(--kn-border); }
+
+/* ============================ Home cards (grid) ========================== */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  background: var(--kn-surface);
+  border: 1px solid var(--kn-border);
+  border-radius: 14px;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.md-typeset .grid.cards > ul > li:hover { border-color: var(--kn-signal); transform: translateY(-2px); }
+.md-typeset .grid.cards .twemoji svg { fill: var(--kn-signal); }
+
+/* ============================ Buttons ==================================== */
+.md-typeset .md-button {
+  border-radius: 10px; border: 1px solid var(--kn-border); font-weight: 600;
+}
+.md-typeset .md-button--primary {
+  background: var(--kn-signal); border-color: var(--kn-signal); color: #fff;
+}
+.md-typeset .md-button--primary:hover { background: var(--kn-orange); border-color: var(--kn-orange); }
+
+/* ============================ Footer ===================================== */
+.md-footer-meta { background: var(--kn-canvas); border-top: 1px solid var(--kn-border); }
+.md-footer { background: var(--kn-canvas); }
+.md-footer__link:hover { opacity: 1; color: var(--kn-orange); }
+
+/* ============================ Scrollbar (dark) =========================== */
+[data-md-color-scheme="slate"] ::-webkit-scrollbar { width: 11px; height: 11px; }
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-track { background: var(--kn-canvas); }
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb { background: #222a36; border-radius: 6px;
+  border: 3px solid var(--kn-canvas); }
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover { background: #2f3a4a; }
