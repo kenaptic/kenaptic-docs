@@ -87,5 +87,6 @@ nav:
   - Concepts:
       - How linking stays safe: concepts/safe-by-design.md
       - When Kenaptic says no: guide/when-kenaptic-says-no.md
+      - Our crawlers: concepts/crawlers.md
       - Glossary: concepts/glossary.md
   - FAQ: faq.md
