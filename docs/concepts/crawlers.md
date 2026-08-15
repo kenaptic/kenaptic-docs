@@ -10,7 +10,7 @@ and how to stop them.
 | **Why it is here** | A Kenaptic customer connected this site as a content source | Public research, or someone ran a free estate scan on this domain |
 | **Reads** | Pages within sources a customer chose | Public pages only, sampled |
 | **Stores** | Derived metadata, personal data stripped first | Metadata only — no page bodies |
-| **Typical rate** | 1 request/second per host, slower if you ask | 1 request every 2 seconds per host; up to 10/second for a 20-second estate scan |
+| **Typical rate** | 1 request/second per host, slower if you ask | 1 request every 2 seconds per host; up to 10/second for a 60-second estate scan |
 | **Opt out** | `robots.txt` | `robots.txt` |
 
 Both honour `robots.txt`. Neither executes JavaScript, submits forms, uses credentials, or reads
@@ -81,9 +81,9 @@ page. That crawl is deliberately small and hard-capped:
 | | |
 |---|---|
 | At most **100 pages** | across every silo combined, per scan |
-| At most **20 seconds** | the whole scan is abandoned at the deadline |
+| At most **60 seconds** | the whole scan is abandoned at the deadline |
 | At most **8 hosts** | subdomain probing cannot become enumeration |
-| Up to **10 requests/second** per host | within that 20-second window, and your `Crawl-delay` still wins |
+| Up to **10 requests/second** per host | within that 60-second window, and your `Crawl-delay` still wins |
 | **One real crawl per domain per 6 hours** | whoever asks — everyone else is served the cached result |
 
 None of those limits can be raised by whoever ran the scan. There is no page-count parameter and
