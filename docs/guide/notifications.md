@@ -42,8 +42,15 @@ For an existing domain: **Domains → open the domain → Approval workflow**.
    |---|---|
    | **Slack** (push) | The channel's incoming webhook URL and your Slack app's signing secret |
    | **Slack** (pull) | A bot token and the channel ID — for networks where Slack can't call in; approvers decide with ✅ / ❌ reactions |
+   | **Discord** (push) | A bot token, the channel ID, and your app's public key — approvers decide with buttons |
+   | **Discord** (pull) | A bot token and the channel ID; approvers decide with ✅ / ❌ reactions |
    | **Webhook** | The URL Kenaptic posts to and a shared secret |
    | **Email** | Nothing — the mail goes to the approvers you name |
+
+   For Discord push, set the app's *Interactions Endpoint URL* to the address shown on the
+   form; Kenaptic answers Discord's validation handshake automatically. Approvers are Discord
+   user IDs. Microsoft Teams is reachable through the **Webhook** tool via a Power Automate
+   Workflows flow (Office 365 connectors are retired).
 
 3. Name the **approvers** — Slack member IDs, email addresses, or whatever identity your tool
    reports. For email, the approvers *are* the recipients, and each person's message carries
