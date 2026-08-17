@@ -35,7 +35,7 @@ affecting the domain's crawling or cross-link publishing.
 
 For an existing domain: **Domains → open the domain → Approval workflow**.
 
-1. Pick the tool: **Slack**, **Webhook** (any tool that accepts one), or **Email**.
+1. Pick the tool: **Slack**, **Discord**, **Webhook** (any tool that accepts one), or **Email**.
 2. Fill in what that tool genuinely needs — the form only asks for what it can't know:
 
    | Tool | You provide |
