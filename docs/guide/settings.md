@@ -1,81 +1,78 @@
 # Settings & account
 
-**Settings** is where you tune your workspace, manage your team, and handle your account. You'll set
-it up once and revisit it occasionally.
+**Settings** covers workspace configuration, team management, and your account.
 
-## Your team
+## Team
 
-Invite the people who'll work in Kenaptic — documentation writers, support leads, web team. Seats
-are unlimited, so there's no reason to leave anyone out. Each person signs in with their own
-credentials and two-factor authentication.
+Invite the people who will work in Kenaptic: documentation writers, support leads, web team. Seats
+are unlimited. Each person signs in with their own credentials and two-factor authentication.
 
-Each person also has a **role**. The line Kenaptic draws is not read versus write — it's **review
-versus publish**:
+Each person has a **role**. The permission boundary sits between reviewing and publishing, not
+between reading and writing:
 
 | | Reviewer | Admin |
 |---|---|---|
 | Read the estate, graph and reports | ✅ | ✅ |
 | Run a crawl or a scoring pass | ✅ | ✅ |
 | Approve, edit and reject proposed links | ✅ | ✅ |
-| **Publish** approved links to live content | — | ✅ |
-| **Retract** something already published | — | ✅ |
+| Publish approved links to live content | — | ✅ |
+| Retract something already published | — | ✅ |
 | Add, remove or re-point a source | — | ✅ |
 | Change workspace settings | — | ✅ |
 
-Reviewing is the job you want lots of people doing: it's internal, reversible, and the more eyes on
-it the better. Publishing is the moment a change becomes public, so it sits with administrators.
+Review actions are internal and reversible, so the Reviewer role is safe to grant widely; more
+reviewers means more scrutiny per link. Publishing makes a change public, so it is restricted to
+administrators.
 
-A reviewer can work through the whole queue and their approvals are saved — an administrator
-deploys them. When someone hits a limit, Kenaptic says which role can do it, rather than just
-refusing, so they know who to ask.
+A reviewer can work through the whole queue. Approvals are saved, and an administrator deploys
+them. When an action is outside someone's role, the message names the role that can perform it, so
+they know who to ask.
 
 ## Projects
 
-If your workspace covers more than one product, group its sources into **projects**. A project keeps
-each product's estate distinct, so its numbers mean something on their own and reviewers aren't
-wading through another team's queue.
+If your workspace covers more than one product, group its sources into **projects**. A project
+keeps each product's estate distinct: each product's numbers are reported on their own, and one
+team's review queue is not mixed with another's.
 
-By default Kenaptic proposes links **within** a project. Where two products genuinely relate, you
-can allow cross-project links deliberately rather than by accident.
+By default Kenaptic proposes links within a project. Where two products relate, you can enable
+cross-project links explicitly.
 
 ## Security
 
 - **Two-factor authentication (2FA)** is required for every account. You can manage your own 2FA
-  from Settings — for example, if you get a new phone.
-- **Protected actions.** Sensitive changes — like connecting a new source — ask you to confirm with
-  your 2FA, so nothing significant happens without a deliberate, verified step.
+  from Settings, for example after getting a new phone.
+- **Protected actions.** Sensitive changes, such as connecting a new source, require confirmation
+  with your 2FA.
 
-## Where things get delivered
+## Delivery destinations
 
 Configure the repositories, ticketing destinations and endpoints that receive approved cross-links.
-See [Where cross-links are delivered](where-links-are-delivered.md) for what each one does and why
-none of them can approve anything.
+See [Where cross-links are delivered](where-links-are-delivered.md) for what each destination does.
+No destination can approve a link.
 
 ## Contribution
 
-If you want to propose links into projects you *don't* own, turn on upstream mode here — it changes
-the rules rather than the settings. See
-[Contribute to projects you don't own](contributing-upstream.md).
+To propose links into projects you do not own, enable **upstream mode** here. The workflow it
+changes is described in [Contribute to projects you don't own](contributing-upstream.md).
 
-## How Kenaptic reviews your estate
+## Estate review settings
 
-You can influence how Kenaptic works across your content — for example, how often it re-checks your
-sources for changes, and how it presents the confidence on proposed links. Sensible defaults are in
-place from day one; adjust them as you learn what fits your team's rhythm.
+These settings control how Kenaptic processes your content: how often sources are re-checked for
+changes, and how the confidence on proposed links is presented. Defaults are set for every
+workspace; adjust them to fit your team's workflow.
 
 ## Billing
 
-Manage your plan and billing from Settings. Kenaptic is priced on the **size of the content estate**
-you keep connected — the number of sources and the volume of content — not on the number of people
-using it. As you connect more of your estate, your plan scales with it.
+Manage your plan and billing from Settings. Pricing is based on the size of the content estate you
+keep connected (the number of sources and the volume of content), not on the number of people using
+it. Plans scale with the estate you connect.
 
-## Getting content out of Kenaptic
+## Data export
 
-Kenaptic isn't a walled garden. You can export what it knows — for reporting, for feeding other
-tools, or simply to keep your own copy — so the value stays yours.
+You can export the data Kenaptic holds about your estate: for reporting, for feeding other tools,
+or to keep your own copy.
 
 ---
 
-That's the tour. If you're after the *why* behind how Kenaptic behaves, read
-[**How linking stays safe**](../concepts/safe-by-design.md), or keep the
-[**Glossary**](../concepts/glossary.md) handy for any unfamiliar terms.
+For the reasoning behind these behaviors, see [the safety model](../concepts/safe-by-design.md).
+Terms are defined in the [Glossary](../concepts/glossary.md).

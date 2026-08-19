@@ -1,34 +1,34 @@
-# Be found by AI
+# AI Readiness
 
-More and more of your audience never visits your site directly — they ask an AI assistant, which
-reads your content on their behalf. Search engines increasingly do the same. Content that machines
-can navigate and trust gets surfaced; content they can't gets skipped.
+A growing share of readers never visit your site directly. They ask an AI assistant, which reads
+your content on their behalf, and search engines increasingly work the same way. Content that
+machines can navigate and trust gets surfaced; content they cannot gets skipped.
 
-The **AI Readiness** page gives you a plain-language read on how well your content can be understood
-by AI assistants and search crawlers — and, more usefully, what to do about it.
+The **AI Readiness** page reports, in plain language, how well AI assistants and search crawlers
+can read your content estate, and lists the changes that improve it.
 
-## What it shows
+## Score and recommendations
 
-- **A readiness score** for your estate, so you can see where you stand and track it improving.
-- **The specific things holding you back** — for example, content that's hard for a crawler to
-  reach, or structure that machines struggle to interpret.
-- **Prioritised, concrete fixes** rather than vague advice — the changes that will move the needle
-  most, first.
+The page shows:
 
-## Why cross-linking helps here too
+- A **readiness score** for the estate, tracked over time.
+- The specific problems found: for example, content a crawler cannot reach, or structure that
+  machines fail to interpret.
+- Concrete fixes, ranked by expected impact, so the largest problems come first.
 
-Well-connected content isn't just friendlier for people — it's friendlier for machines. When your
-pages reference each other clearly, an AI assistant reading one page can follow the trail to the
-related material, understand the fuller picture, and represent your content more accurately. The
-cross-links you approve in Kenaptic directly improve how machines see your estate.
+## Cross-links and machine readability
 
-## Using it
+Cross-references between pages help machine readers as well as people. When pages reference each
+other clearly, an AI assistant reading one page can follow the links to the related material and
+represent the content more completely. Cross-links approved in Kenaptic improve how machines read
+the estate.
 
-Treat AI Readiness like the Overview dashboard, but for machine-friendliness: check it periodically,
-work down the prioritised fixes, and watch the score climb as you connect more content and act on
-its recommendations.
+## Workflow
+
+Use AI Readiness the same way as the Overview dashboard: check it periodically, work down the
+ranked fixes, and track the score as you connect more content and apply the recommendations.
 
 ---
 
-Next, prove the whole thing is working:
-[:octicons-arrow-right-24: Measure the impact](measure.md)
+Next: measure the results.
+[:octicons-arrow-right-24: Measurement](measure.md)

@@ -66,27 +66,27 @@ extra:
   generator: false
 
 nav:
-  - Why Kenaptic: index.md
+  - The problem: index.md
   - Introduction:
       - How it works: introduction/how.md
-      - What Kenaptic does: introduction/what.md
+      - Capabilities: introduction/what.md
   - Getting started:
-      - Your workspace: getting-started/workspace.md
+      - Workspace: getting-started/workspace.md
       - Connect a source: getting-started/connect-a-source.md
       - The review loop: getting-started/the-review-loop.md
   - Using Kenaptic:
-      - Discover your estate: guide/discover.md
-      - Find gaps & contradictions: guide/gaps-and-contradictions.md
+      - Discover: guide/discover.md
+      - Gaps & contradictions: guide/gaps-and-contradictions.md
       - Review & publish links: guide/review-and-publish.md
       - Where cross-links are delivered: guide/where-links-are-delivered.md
-      - Be found by AI: guide/ai-readiness.md
-      - Measure the impact: guide/measure.md
+      - AI Readiness: guide/ai-readiness.md
+      - Measurement: guide/measure.md
       - Approval workflows & notifications: guide/notifications.md
-      - Contribute to projects you don't own: guide/contributing-upstream.md
+      - Upstream contributions: guide/contributing-upstream.md
       - Settings & account: guide/settings.md
   - Concepts:
-      - How linking stays safe: concepts/safe-by-design.md
-      - When Kenaptic says no: guide/when-kenaptic-says-no.md
-      - Our crawlers: concepts/crawlers.md
+      - Safety model: concepts/safe-by-design.md
+      - Refusals & unmeasured states: guide/when-kenaptic-says-no.md
+      - Crawlers: concepts/crawlers.md
       - Glossary: concepts/glossary.md
   - FAQ: faq.md

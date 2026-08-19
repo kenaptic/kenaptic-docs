@@ -1,61 +1,60 @@
-# What Kenaptic does
+# Capabilities
 
-Kenaptic is a single place to connect your content estate, decide which cross-links to add, publish
-them at the source, and prove they made a difference. Here's what that looks like in the product.
+Kenaptic is a single application for connecting a content estate, deciding which cross-links to
+add, publishing them at the source, and measuring their effect. This page describes each area of
+the product.
 
-## Cross-links across your silos
+## Cross-silo links
 
-The core job: Kenaptic finds and adds native cross-reference links **between** your separate
-content sources — docs to knowledge base, knowledge base to forum, blog to docs, and so on — so a
-reader who lands anywhere can find the related material everywhere.
+Kenaptic finds and adds native cross-reference links between separate content sources: docs to
+knowledge base, knowledge base to forum, blog to docs. A reader who lands on any page can reach
+the related material in the other silos.
 
-## A map of your estate
+## Estate map
 
-Kenaptic gives you a live picture of your content:
+Kenaptic maintains a live picture of the content estate:
 
-- **Overview** — the health of your estate at a glance: how much is connected, what's new, what
-  needs attention.
-- **Documents** — every page Kenaptic knows about, searchable and filterable by source.
-- **Knowledge Graph** — a visual map of how your content connects, so you can *see* the structure
-  (and the gaps) instead of guessing at it.
+- **Overview** — estate health: how much content is connected, what is new, and what needs
+  attention.
+- **Documents** — every page in Kenaptic's index, searchable and filterable by source.
+- **Knowledge Graph** — a visual map of the connections between pages, including where
+  connections are missing.
 
-## Problems you didn't know you had
+## Gaps and contradictions
 
-Beyond adding links, Kenaptic surfaces issues across silos that no single tool would catch:
+Kenaptic also detects issues that span silos and that single-platform tools do not catch:
 
-- **Content Gaps** — questions your audience clearly has, where you have partial coverage or none.
-  Kenaptic doesn't just flag the gap; it can help you start closing it.
-- **Contradictions** — places where two of your pages say *different things* about the same subject
-  (for example, docs describing an old behaviour a blog post already announced as changed). Kenaptic
-  points both pages out so you can reconcile them.
+- **Content Gaps** — questions your audience is asking that your content covers partially or not
+  at all. Kenaptic flags each gap and can assist with starting to close it.
+- **Contradictions** — pairs of pages that make conflicting statements about the same subject,
+  for example docs describing an old behaviour that a blog post has announced as changed.
+  Kenaptic identifies both pages so they can be reconciled.
 
-## A review workflow built for teams
+## Review workflow
 
-- **Cross-link Review** — the queue where your team approves, edits, or rejects each proposed link,
-  with a preview of the exact change.
-- **Link Injection** — where approved links are published to the source and where you can retract
-  them just as cleanly.
-- Every decision is recorded, so you always have a trail of who approved what and when.
+- **Cross-link Review** — the queue where your team approves, edits, or rejects each proposed
+  link, with a preview of the exact change.
+- **Link Injection** — publishes approved links to the source and retracts them when needed.
+- Every decision is recorded: who approved what, and when.
 
-## Readiness for AI and search
+## AI and search readiness
 
-- **AI Readiness** — a plain-language read on how well your content can be understood by AI
-  assistants and search crawlers, with concrete, prioritised fixes.
+- **AI Readiness** — a plain-language assessment of how well AI assistants and search crawlers
+  can understand your content, with concrete, prioritised fixes.
 
-## Proof that it worked
+## Measurement
 
-- **Link Performance** — which cross-links are actually being clicked, and where they lead.
-- **Analytics** and **Reports** — the trends over time and shareable summaries for stakeholders.
-- **Audit** — a full record of activity and decisions for compliance and peace of mind.
+- **Link Performance** — which cross-links are clicked, and where they lead.
+- **Analytics** and **Reports** — trends over time and shareable summaries for stakeholders.
+- **Audit** — a full record of activity and decisions, for compliance.
 
-## Safe and respectful by design
+## Safety model
 
-- A **person approves every change** before it's published.
-- Every added link is **clearly marked and reversible**.
-- Kenaptic **honours each site's crawling rules** and **never republishes** forum or discussion
-  content — it links to it.
-- Your content, your voice: Kenaptic proposes, your team decides.
+- Kenaptic proposes links; a person approves every change before it is published.
+- Every added link is clearly marked and reversible.
+- Kenaptic honours each site's crawling rules. Forum and discussion content is never
+  republished; Kenaptic links to it instead.
 
 ---
 
-Ready to try it? Start with [**your workspace**](../getting-started/workspace.md).
+To get started, see [your workspace](../getting-started/workspace.md).

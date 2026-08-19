@@ -1,72 +1,72 @@
 # How it works
 
-Kenaptic follows one simple loop: **connect → understand → propose → review → publish → keep
-fresh.** You stay in control at every step, and by default nothing goes live without your approval.
+Kenaptic runs one pipeline: connect, understand, propose, review, publish, keep current. By
+default, nothing goes live without human approval.
 
 ## 1. Connect your sources
 
-You tell Kenaptic where your content lives — your documentation site, knowledge base, blog,
-forum, and so on. Each source is added as a **domain** in the app. Kenaptic reads the content the
-same way any visitor would, and it respects each site's crawling rules.
+Add each place your content lives as a **domain** in the app: documentation site, knowledge base,
+blog, forum. Kenaptic reads the content the same way any visitor would and respects each site's
+crawling rules.
 
-Sources come in two roles:
+Sources have one of two roles:
 
-- **Sources Kenaptic can write to** (like a docs site you control) — Kenaptic can add links here,
-  always through your review.
-- **Sources Kenaptic only links to** (like a public forum) — Kenaptic reads them so it can point
-  *to* them, but never modifies them.
+- **Writable sources**, such as a docs site you control. Kenaptic can add links to these, always
+  through your review.
+- **Link destinations**, such as a public forum. Kenaptic reads these so it can link to them, and
+  never modifies them.
 
 ## 2. Understand the content
 
-Kenaptic reads every page and builds an understanding of what each one is *about* — the topics it
-covers and how it relates to everything else in your estate. The result is a map of your content:
-pages as points, and the meaningful relationships between them as connections.
+Kenaptic reads every page and determines the topics it covers and how it relates to the rest of
+your estate. The result is a map of your content: pages as points, and the relationships between
+them as connections.
 
-!!! note "What Kenaptic reads, and what it doesn't"
+!!! note "Data handling"
     Kenaptic works from the public content of the pages you connect, and honours each site's
-    stated crawling and usage rules. It never republishes forum or discussion content — it only
+    stated crawling and usage rules. It never republishes forum or discussion content; it only
     links to it.
 
-    **Personal data is removed before anything is stored.** Email addresses, phone numbers,
-    handles, usernames and bylines are stripped from every page as it is ingested — from every
-    source, including your own — so nothing personal is kept and nothing personal is ever sent to
-    a language model. See [How linking stays safe](../concepts/safe-by-design.md).
+    Personal data is removed before anything is stored. Email addresses, phone numbers, handles,
+    usernames and bylines are stripped from every page as it is ingested, from every source
+    including your own. Nothing personal is kept, and nothing personal is sent to a language
+    model. See the [safety model](../concepts/safe-by-design.md).
 
-## 3. Propose the links that should exist
+## 3. Propose links
 
-From that map, Kenaptic surfaces the cross-links worth adding. Each proposal comes with:
+From that map, Kenaptic generates cross-link proposals. Each proposal includes:
 
-- **The two pages it would connect**, and the direction of the link.
-- **A relationship type** — for example, one page *explains* a concept another page uses, or a
-  forum thread *discusses a real-world issue with* a documented feature. These plain-language types
-  tell you *why* the link makes sense, not just that two pages are similar.
-- **A confidence indicator** — Kenaptic's read on how strong the match is, to help you triage. It's
-  decision support, not a verdict.
+- The two pages the link would connect, and the direction of the link.
+- A **relationship type**: for example, one page *explains* a concept another page uses, or a
+  forum thread *discusses a real-world issue with* a documented feature. The type records why the
+  link applies, beyond the fact that two pages are similar.
+- A **confidence indicator** of how strong the match is, used to triage proposals. It informs the
+  review decision and does not replace it.
 
-## 4. Review — a person decides
+## 4. Review
 
-Every proposed link goes into a **review queue**. A member of your team approves, edits, or rejects
-each one. You can preview exactly what will change before anything happens.
+Every proposed link enters a **review queue**, where a member of your team approves, edits, or
+rejects it. A preview shows the exact change before anything is published.
 
-This human review gate is deliberate. Kenaptic is confident, but your team owns your content and
-your voice. Kenaptic proposes; you decide.
+Review is required by default. Your team owns the content, and no link is published without an
+explicit approval.
 
 ## 5. Publish at the source
 
-When you approve a link, Kenaptic writes it **into the page's own source** — not as an overlay or a
-widget that disappears if a script fails, but as a real, native link in the content itself. That
-means it works for every visitor, every search engine, and every AI assistant that reads your
-pages.
+An approved link is written into the page's own source as a native link, not as an overlay or a
+script-injected widget. Because the link is part of the content itself, it reaches every visitor,
+every search engine, and every AI assistant that reads the page, and it does not disappear if a
+script fails.
 
-Links are added in a way that is **clearly marked and fully reversible**. Kenaptic can remove or
-update any link it added, cleanly, at any time.
+Injected links are clearly marked and reversible. Kenaptic can remove or update any link it added,
+cleanly, at any time.
 
-## 6. Keep it fresh — automatically
+## 6. Keep links current
 
-Content changes. Pages move, get rewritten, or are retired. Kenaptic re-checks your estate on a
-schedule and keeps the cross-links current: adding new ones as new content appears, and retiring
-links that no longer make sense — again, with your review in the loop.
+Pages move, get rewritten, or are retired. Kenaptic re-checks your estate on a schedule and keeps
+the cross-links current: it proposes new links as new content appears and retires links that no
+longer apply. These changes pass through the same review queue.
 
 ---
 
-Curious what all of this adds up to in the product? See [**what Kenaptic does**](what.md).
+For the full set of product capabilities, see [Capabilities](what.md).

@@ -1,137 +1,132 @@
-# How linking stays safe
+# Safety model
 
-Kenaptic changes your live content. That's the whole point — native links at the source are what
-make it work for every reader and every machine. But changing published content is a responsibility,
-and Kenaptic is built so that responsibility always sits with you. Here are the principles that keep
-it safe.
+Kenaptic modifies live content: it injects native links into page source, where every reader and
+every crawler can see them. Because it changes published pages, the product is built so that
+control over every change stays with your team. This page describes the mechanisms that enforce
+that.
 
-## A person approves every change
+## Human review
 
-Every proposed link, and every content fix, goes through a review where a member of your team
-approves, edits, or rejects it. Kenaptic is the tireless analyst that finds the opportunities; your
-team is the editor who decides. Kenaptic proposes, you decide.
+Every proposed link and every content fix goes through review. A member of your team approves,
+edits, or rejects each proposal before anything is published.
 
-!!! warning "The one exception, and it's yours to switch on"
+!!! warning "Auto-publish"
     **Auto-publish** can be enabled per source, for links scoring above a confidence threshold you
-    set. It is off everywhere until an administrator deliberately turns it on, only an administrator
-    can turn it on, and the switch carries a warning we make no attempt to soften. We don't
-    recommend it.
+    set. It is off by default everywhere. Only an administrator can enable it, and enabling it
+    displays a warning. We recommend leaving it off.
 
-    Everything else on this page still applies when it's on. Links are marked and reversible;
-    auto-approvals are recorded in the audit trail under an explicit system actor rather than
-    attributed to a person; and switching it back off withdraws anything it approved that hasn't
-    gone out yet. What it does **not** do is pull back links already published — taking live content
-    off your site is always an explicit Retract, never a side effect of a settings toggle.
+    Everything else on this page still applies when it is on. Links remain marked and reversible.
+    Auto-approvals are recorded in the audit trail under an explicit system actor rather than
+    attributed to a person. Switching auto-publish back off withdraws anything it approved that
+    has not yet been published. It does not pull back links already published: removing live
+    content from your site always requires an explicit Retract and is never a side effect of a
+    settings toggle.
 
-    **It cannot be combined with upstream contribution mode** — see the next section.
+    Auto-publish cannot be combined with upstream contribution mode. See the next section.
 
-## Auto-publish and upstream contributions can't both be on
+## Auto-publish and upstream contributions
 
-If you [contribute to projects you don't own](../guide/contributing-upstream.md), that mode and
-auto-publish are mutually exclusive. Switching either on switches the other off, and Kenaptic
-says so when it does.
+If you [contribute to projects you don't own](../guide/contributing-upstream.md), upstream
+contribution mode and auto-publish are mutually exclusive. Switching either on switches the other
+off and reports that it has done so.
 
-This is a deliberate limitation and the reasoning is short. Auto-publish is defensible on your own
-documentation because the worst case is a weak link on a page you control and can retract in one
-click. Upstream, both halves of that defence disappear:
+The reasoning: auto-publish is defensible on your own documentation because the worst case is a
+weak link on a page you control, retractable in one click. Upstream, both halves of that defence
+disappear:
 
-- **A maintainer who receives automated pull requests nobody read stops accepting them** — often
-  publicly. Every other rule in upstream mode exists to avoid being that tool.
-- **A DCO sign-off is a named person asserting they have the right to submit the change.** Signing
-  off work that person never saw is not a technicality; it is the assertion being false.
+- A maintainer who receives automated pull requests nobody read stops accepting them, often
+  publicly. Every other rule in upstream mode exists to avoid producing that outcome.
+- A DCO sign-off is a named person asserting they have the right to submit the change. Signing
+  off work that person never saw makes the assertion false.
 
-Neither is undone by retracting the link. That's the line: auto-publish's whole justification is
-that its mistakes are cheap and reversible, and upstream they are neither.
+Neither problem is undone by retracting the link. Auto-publish is acceptable only where its
+mistakes are cheap and reversible; upstream contributions are neither.
 
-Your DCO identity, permitted organisations and volume caps are kept when the mode switches off, so
-turning upstream mode back on doesn't quietly lose its guardrails. Any links auto-publish had
-approved but not yet deployed return to the review queue.
+Your DCO identity, permitted organisations, and volume caps are kept when upstream mode switches
+off, so turning it back on does not lose its guardrails. Any links auto-publish had approved but
+not yet deployed return to the review queue.
 
-## Every change is marked and reversible
+## Change marking and reversibility
 
-When Kenaptic adds a link to a page, it's **clearly tagged** as Kenaptic's, so you can always tell
-what it added from what was already there. And it's **fully reversible**: Kenaptic can remove or
-update any link it added, cleanly, leaving the page exactly as it was. You're never locked in, and
-there's never a mystery about where a link came from.
+Every link Kenaptic adds to a page is tagged as Kenaptic's, so its additions are always
+distinguishable from pre-existing content. Every link is also reversible: Kenaptic can remove or
+update any link it added, cleanly, leaving the page exactly as it was. There is no lock-in, and
+the origin of every link is recorded.
 
-## Personal data is removed before anything is stored
+## Personal data removal
 
-Your estate contains people. Forum threads carry members' names and handles, support pages quote
-customers' email addresses, blog posts carry bylines. Kenaptic does not want any of it, and does
-not keep it.
+Public content contains personal data: forum threads carry members' names and handles, support
+pages quote customers' email addresses, blog posts carry bylines. Kenaptic does not store any of
+it.
 
-**Every page Kenaptic reads is stripped of personal identifiers before it is stored** — email
-addresses, phone numbers, `@handles`, `u/usernames`, byline and profile patterns are removed from
-the title, body and description at the moment of ingestion. Everything downstream is built from
-the cleaned text, so the working copy, the search index, the topic digests and every request sent
-to a language model are clean by construction rather than cleaned up afterwards.
+Every page Kenaptic reads is stripped of personal identifiers before it is stored. Email
+addresses, phone numbers, `@handles`, `u/usernames`, and byline and profile patterns are removed
+from the title, body, and description at the moment of ingestion. Everything downstream is built
+from the cleaned text: the working copy, the search index, the topic digests, and every request
+sent to a language model are clean by construction rather than cleaned up afterwards.
 
-Two consequences worth knowing:
+Two consequences:
 
-- **Nothing personal reaches a model.** The removal happens before any text is sent anywhere, so
-  personal data is never part of a prompt. The detection itself is plain pattern matching that
-  runs on your own infrastructure — Kenaptic does not send text to a model in order to find the
-  personal data in it, which would defeat the purpose.
-- **It applies to every source, including your own.** This is not a rule for other people's
-  sites. Your forum belongs to you; the posts in it belong to the people who wrote them, and they
-  are treated the same way as any other source.
+- No personal data reaches a model. Removal happens before any text is sent anywhere, so personal
+  data is never part of a prompt. Detection is plain pattern matching that runs on your own
+  infrastructure; Kenaptic does not send text to a model to find the personal data in it.
+- Removal applies to every source, including your own. Your forum belongs to you, but the posts
+  in it belong to the people who wrote them, and they are treated the same way as any other
+  source.
 
-!!! note "What this does and doesn't claim"
-    Kenaptic removes the identifier patterns that appear on public pages, before storage. That is
-    data minimisation, and it is applied to everything — but pattern matching is not the same as a
-    guarantee that no personal data can ever survive in free-form prose. If part of a site needs to
-    be left unread entirely rather than minimised, keep it outside the crawl's scope — a source
-    reads only what sits under its configured path, so a narrower starting address is what keeps a
-    section out. See
-    [What you can and can't keep out of a crawl](../guide/when-kenaptic-says-no.md#what-you-can-and-cant-keep-out-of-a-crawl).
+!!! note "Limits of pattern matching"
+    Kenaptic removes the identifier patterns that appear on public pages, before storage. This is
+    data minimisation applied to everything, not a guarantee that no personal data can survive in
+    free-form prose. If part of a site must be left unread entirely rather than minimised, keep it
+    outside the crawl's scope: a source reads only what sits under its configured path, so a
+    narrower starting address is what keeps a section out. See
+    [Crawl scope](../guide/when-kenaptic-says-no.md#crawl-scope).
 
-## Kenaptic refuses to write in places it shouldn't
+## Write restrictions
 
-Not every page in a repository is a safe place to add a link, and getting this wrong is worse than
-doing nothing — because the change looks correct right up until it disappears. Kenaptic declines to
-write to:
+Not every page in a repository is a safe place to add a link, and a misplaced change looks
+correct until the next build or sync erases it. Kenaptic declines to write to:
 
-- **Generated pages.** Documentation built from code, schemas or configuration is overwritten on
-  the next build. Editing it either vanishes or, worse, edits the thing that generates it.
+- **Generated pages.** Documentation built from code, schemas, or configuration is overwritten on
+  the next build. An edit either vanishes or, worse, modifies the thing that generates it.
 - **Translations.** A translated page belongs to the people who maintain that language. An English
-  link block dropped into it is broken for its readers and lands in front of reviewers who did not
-  write the page. Kenaptic proposes against the source language and lets translation flow normally.
+  link block inserted into it is broken for its readers and lands in front of reviewers who did
+  not write the page. Kenaptic proposes against the source language and lets translation flow
+  normally.
 - **Frozen versions.** Old releases that no longer accept changes.
-- **Content that lives somewhere else.** A folder synced in from another repository, or included as
-  a sub-repository, belongs to that repository — a change made here is erased by the next sync.
-- **Archived projects.** Something that has been wound down is a place to link *to*, never a place
-  to propose work.
+- **Content that lives somewhere else.** A folder synced in from another repository, or included
+  as a sub-repository, belongs to that repository. A change made here is erased by the next sync.
+- **Archived projects.** A wound-down project is a link destination, not a place to propose work.
 
-Every refusal is reported, never silent. A page Kenaptic won't touch is usually telling you
-something true about your estate, and hiding it would just look like Kenaptic being unreliable.
+Every refusal is reported, never silently applied. A refused page usually reflects a structural
+fact about your estate, such as a generated section or a synced folder.
 
-## Kenaptic respects the sources it reads
+## Source handling
 
-- **It honours each site's rules.** Kenaptic reads content the way a well-behaved visitor does and
-  follows each site's stated crawling and usage policies. A site that asks not to be crawled isn't.
-- **It reads gently.** Requests to any one site are paced and capped per run, so a large estate
-  never arrives as a burst of traffic on somebody's server. If a cap is reached, Kenaptic says the
-  crawl was a partial view rather than quietly presenting it as the whole picture.
-- **It only writes where it's entitled to.** Kenaptic can add links only to sources you've confirmed
-  you own and control. Third-party sources — like public forums — are read-only destinations: it
-  links *to* them, but never changes them.
-- **It never republishes other people's content.** For a forum thread or discussion, Kenaptic adds
-  a link that points readers to the original. It doesn't copy the content into your pages.
+- Kenaptic follows each site's stated crawling and usage policies. A site that asks not to be
+  crawled is not crawled.
+- Requests to any one site are paced and capped per run, so a large estate never arrives as a
+  burst of traffic on one server. If a cap is reached, the crawl result is reported as a partial
+  view rather than presented as complete.
+- Kenaptic adds links only to sources you have confirmed you own and control. Third-party
+  sources, such as public forums, are read-only destinations: Kenaptic links to them but never
+  changes them.
+- Third-party content is never republished. For a forum thread or discussion, Kenaptic adds a
+  link that points readers to the original. It does not copy the content into your pages.
 
-## Your data is handled carefully
+## Data handling
 
-Kenaptic works from the public content of the pages you connect and is built to **minimise personal
-data** — it isn't interested in individuals, only in how content relates. Sensitive details are
-kept out of the way it understands and stores your content.
+Kenaptic works from the public content of the pages you connect and minimises personal data. It
+stores how content relates, not information about individuals, and keeps sensitive details out of
+the way it understands and stores your content.
 
-## You stay accountable — and can prove it
+## Audit trail
 
-Every decision and every change is recorded in the **Audit** trail. If anyone ever asks "why is this
-link here, who approved it, and when?", the answer is one page away. That record is there for your
-own peace of mind and for any compliance process you need to satisfy.
+Every decision and every change is recorded in the **Audit** trail: which link was added, who
+approved it, and when. The record supports internal review and any compliance process you need to
+satisfy.
 
 ---
 
-Together these principles mean Kenaptic can do something powerful — edit your live content across
-every silo — while never taking a step your team didn't approve, and never making a change you can't
-undo.
+These principles let Kenaptic edit live content across every silo while ensuring that every
+change is approved by your team and every change can be undone.
